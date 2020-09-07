@@ -2,7 +2,6 @@ package com.homework18.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
@@ -15,8 +14,7 @@ import javax.sql.DataSource;
 import java.util.Properties;
 
 @Configuration
-@ComponentScan("com.homework18")
-@PropertySource("database.properties")
+@PropertySource("application.properties")
 @EnableTransactionManagement
 public class Config {
     @Value("${db.driverClassName}")
@@ -64,7 +62,7 @@ public class Config {
         var hibernateProperties = new Properties();
         hibernateProperties.setProperty("hibernate.hbm2ddl.auto", "create");
         hibernateProperties.setProperty("hibernate.show_sql", "false");
-        hibernateProperties.setProperty("hibernate.dialect", "org.hibernate.dialect.db23");
+        hibernateProperties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQ8Dialect");
 
         return hibernateProperties;
     }
